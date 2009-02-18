@@ -160,6 +160,14 @@ git merge apple
 //////一切OK，就提交吧，提交到哪里了呢？内定的别名啊，哈哈
 git push
 
+1. git remote 的常有参数的简介
+    git remote add <name> <url> 给远程的 source（资源项目） 起别名
+         例如：git remote add origin git://github.com/flag/jok.git
+    git remote rm <name> 删除 别名
+    git remote show <name> 显示 每个别名中的信息
+    git remote prune <name> （未知）
+    git remote update [group] 更新信息
+    -v, --verbose 查看所有详情（查看name 对应的 url）
 
 
 附Rails下面的快捷键。vim下的rails开发，有一个rails.vim就够了.
