@@ -192,3 +192,6 @@ make config
 选择自己会需要的项目,记得modules要选,X11不选,因为如果选中,安装时间特慢,接着
 # make install clean
 看是否安装成功 convert --version
+2,  tar xvjf RMagick-2.9.1-tar.bz2  
+    ruby setup.rb
+    ruby setup.rb install
