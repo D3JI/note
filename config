@@ -102,13 +102,21 @@ MASTER_SITE_OVERRIDE?=${MASTER_SITE_BACKUP}
    #rehash
 5, 使用gem安装rails以及ruby的mysql库
    gem install rails mysql
-6, 因为ports里的vim不是最新的，所以手动下载安装
-   下载vim7.tar.gz2
-   tar -zxvf vim2.tar.gz2
-   cd vim72/src
-   make 
-   make install
-7, #cd /usr/ports/devel/git 
+6, 安装 ImageMagick
+   # cd /usr/ports/graphics/ImageMagick/
+   # make install clean
+   # rehash
+   # convert --version
+7, 安装RMagic
+   # tar xvjf RMagick-2.9.1-tar.bz2  
+   # ruby setup.rb
+   # ruby setup.rb install
+8, 因为ports里的vim不是最新的，所以手动下载安装
+   # tar -zxvf vim2.tar.gz2
+   # cd vim72/src
+   # make 
+   # make install
+9, #cd /usr/ports/devel/git 
    #make install clean
    去用户的主目录
    mkdir .vim
@@ -186,12 +194,3 @@ gf  跳转到类文件
 
 
 
-1、安装 ImageMagick
-# cd /usr/ports/graphics/ImageMagick/
-make config
-选择自己会需要的项目,记得modules要选,X11不选,因为如果选中,安装时间特慢,接着
-# make install clean
-看是否安装成功 convert --version
-2,  tar xvjf RMagick-2.9.1-tar.bz2  
-    ruby setup.rb
-    ruby setup.rb install
