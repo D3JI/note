@@ -2,6 +2,13 @@ freebsd安装手记
 启动的时候在beastie那里输入6，然后对Ok回答：
 set hint.atkbd.0.flags="0x1"
 boot
+如果碰到
+panic y/n? [y] panic: bye-bye
+cpuid = 0  
+则：
+unload
+set currdev=disk0s1a:
+boot 
 安装完成后，在/boot/loader.conf里面加入：
 hint.atkbd.0.flags="0x1"
 
