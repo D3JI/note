@@ -194,3 +194,11 @@ gf  跳转到类文件
 
 
 
+Ubuntu下RMagic安装
+# 安装ImageMagick
+apt-get install imagemagick
+apt-get install libmagick9-dev ruby1.8-dev
+gem install rmagick
+# 说明：如果出现问题或者错误请执行下面命令
+apt-get remove --purge libmagick9-dev
+
