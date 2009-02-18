@@ -183,3 +183,12 @@ gf  跳转到类文件
 :Rview						|rails-:Rview|
 :Rlayout					|rails-:Rlayout|
 :Rfunctionaltest				|rails-:Rfunctionaltest|
+
+
+
+1、安装 ImageMagick
+# cd /usr/ports/graphics/ImageMagick/
+make config
+选择自己会需要的项目,记得modules要选,X11不选,因为如果选中,安装时间特慢,接着
+# make install clean
+看是否安装成功 convert --version
