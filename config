@@ -224,3 +224,22 @@ initdb -D /usr/lcoal/pgsql/data
 postmaster -D /usr/lcoal/pgsql/data
 createdb test
 dropdb test 
+
+安装PostgreSQL8.3
+用PREFIX指定安装路径/home/developer/opt/postgresql
+#cd /usr/ports/databases/postgresql83-server
+#make install clean PREFIX=/home/developer/opt/postgresql
+建立pgsql数据库位置
+#mkdir /home/developer/opt/postgresql/pgsql/data
+#su root
+#chown -R pgsql /home/developer/opt/postgresql/pgsql/data
+启动postgresql
+#/home/developer/opt/postgresql/bin/pg_ctl -D /home/developer/opt/postgresql/pgsql/data
+开机启动postgresql
+#cp /home/developer/opt/postgresql/etc/rc.d/postgresql /usr/local/etc/rc.d/
+在/etc/rc.conf中加入：
+postgresql_enable="YES"
+postgresql_data="/home/developer/opt/postgresql/pgsql/data"
+postgresql_flags="-w -s -m fast"
+postgresql_initdb_flags="--encoding=utf-8 --lc-collate=C"
+postgresql_class="default"
