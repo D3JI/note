@@ -210,3 +210,7 @@ gem install rmagick
 # 说明：如果出现问题或者错误请执行下面命令
 apt-get remove --purge libmagick9-dev
 
+root# mkdir /usr/local/pgsql/data
+root# chown postgres /usr/local/pgsql/data
+root# su postgres
+postgres$ initdb -D /usr/local/pgsql/data
