@@ -232,7 +232,7 @@ pw groupdel applegroup
 #su pgsql
 $initdb -D /usr/local/pgsql/data   -E utf8
 這時你再下 ls /usr/local/pgsql 指令時，就可以看到多出一個 data 目錄了，這樣才能正確啟動 PostgreSQL：
-$/usr/local/bin/postgres -D /usr/local/pgsql/data
+$postgres -D /usr/local/pgsql/data
 启动postgresql以后，就可以创建删除数据库了。如果想进入数据库里查看数据库，我们用psql，该命令需要一个数据库名作为参数，默认是当前用户名
 所以我们进行下面操作
 $createdb pgsql
