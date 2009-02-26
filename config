@@ -210,20 +210,8 @@ gem install rmagick
 # 说明：如果出现问题或者错误请执行下面命令
 apt-get remove --purge libmagick9-dev
 
-root# mkdir /usr/local/pgsql/data
-root# chown postgres /usr/local/pgsql/data
-root# su postgres
-postgres$ initdb -D /usr/local/pgsql/data
 
-cd /usr/ports/databases/postgresql81-server
-make install clean
-mkdir /usr/local/pgsql/data
-adduser aa
-chown aa /usr/local/pgsql/data
-initdb -D /usr/lcoal/pgsql/data
-postmaster -D /usr/lcoal/pgsql/data
-createdb test
-dropdb test 
+
 
 安装PostgreSQL8.3
 用PREFIX指定安装路径/home/developer/opt/postgresql
@@ -246,63 +234,39 @@ postgresql_class="default"
 
 
 
+
+
+pw usershow -a
+pw userdel apple
+pw groupshow -a
+pw groupdel applegroup
 使用 port 來安裝 PostgreSQL 8.3 
     # cd /usr/ports/databases/postgresql83-server
     # make install clean
-FreeBSD 會自動幫你將 8.3 版的 server 和 client 都一併裝好。接著把 contrib package 也裝起來：
-    # cd ../postgresql-contrib
-    # make install clean
-    # /usr/local/etc/rc.d/postgresql initdb [1]
+然后看一下，是否有数据库  ls /usr/local/pgsql
+安装完了使用pw usershow -a
+          pw groupshow -a
+看一下，是否建立了对应的账号，然后切换到用户，初始化数据库
+#su pgsql
+$initdb -D /usr/local/pgsql/data
 這時你再下 ls /usr/local/pgsql 指令時，就可以看到多出一個 data 目錄了，這樣才能正確啟動 PostgreSQL：
-    #/usr/local/bin/postgres -D /usr/local/pgsql/data
-或使用:
-    #/usr/local/bin/pg_ctl -D /usr/local/pgsql/data -l logfile start
-
-
-LINUX下POSTGRESQL数据库的建立问题！◎！！！！！
-
-不是跟你说了吗按我的方法去做。你有没有做  
-tar vxf post732.tar.gz
-make install
-groupadd postgres
-useradd postgres -d /usr/local/pgsql -g postgres
-chown -R postgres.postgres /usr/local/pgsql
-chmod -R 777 /usr/local/pgsql
-cp lib/* /usr/lib/.
-su  - postgres         记得中间一定有  -
-/usr /local/pgsql/bin/initdb /usr/local/pgsql/data  初始化数据库
-说的不能再详细了吧。
-按我说的去做肯定没问题我装了30多台。
-
-pw usershow -a
-
-
-
-
-三、安装postgresql 8.0
-
-安装#
-cd /usr/ports/databades/postgresql-devel
-#make install
-#rehash
-初始化数据库
-
-#su -l pgsql -c initdb
-启动数据库服务器
-
-# su pgsql
-# pg_ctl -D /usr/local/pgsql/data -l logfile
-
-
-创建pgsql库
-
+$/usr/local/bin/postgres -D /usr/local/pgsql/data
+启动postgresql以后，就可以创建删除数据库了。如果想进入数据库里查看数据库，我们用psql，该命令需要一个数据库名作为参数，默认是当前用户名
+所以我们进行下面操作
 $createdb pgsql
+$psql
+然后，进入下面的提示符，一切正常pgsql=#
 
 
-测试$psql
-pgsql-# /l //**显示所有数据库列表，和mysql的show databases功能等同;
 
-默认连接pgsql库，如果前面不创建，这一步就会报错。这点好像和mysql有点区别。
+
+
+
+
+
+
+
+
 
 四、初学经验分享
 在pgsql-#的提示下，分两种命令格式，以"/"引导开头的是postgresql的管理命令，再一种就是SQL语句。
