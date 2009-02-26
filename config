@@ -246,13 +246,13 @@ postgresql_class="default"
 
 
 
-使用 port 來安裝 PostgreSQL 8.3 了。在安裝前，請先確定你的伺服器上的 port tree 是否已是最新的版本，如果你的 port tree 是在 2008/2/5 天亮前更新的，可能 postgresql-server-8.3 還不是最新版本，請先手動更新 port tree。如果已是最新版本，那麼切到該 port 目錄：
+使用 port 來安裝 PostgreSQL 8.3 
     # cd /usr/ports/databases/postgresql83-server
     # make install clean
 FreeBSD 會自動幫你將 8.3 版的 server 和 client 都一併裝好。接著把 contrib package 也裝起來：
     # cd ../postgresql-contrib
     # make install clean
-如果你曾經把 php5 的 driver 移除掉或 JDBC 等等等之前移除掉的套件，現在也請用同樣的方法把所有新的版本一一裝回去。這樣就好了嗎？還早，請先看一下你的 /usr/local/pgsql 下是否已經建好新的資料庫？
+先看一下你的 /usr/local/pgsql 下是否已經建好新的資料庫？
     # ls /usr/local/pgsql
 如果這個目錄下只出現一個剛才更名的 data_8.2，那麼代表 Makefile 並沒有自動幫你做 initdb，請執行：
     # /usr/local/etc/rc.d/postgresql initdb [1]
