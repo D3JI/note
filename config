@@ -316,3 +316,17 @@ pgsql-# /l //**显示所有数据库列表，和mysql的show databases功能等�
 /du     显示用户列表
 /!       回到shell下执行操作，exit返回
 /q     退出psql 
+
+$createdb mydb
+PostgreSQL 会返回 “ CREATED DATABASE”的信息，表明数据库建立完成。
+$pSQL mydb
+$pSQL mydb
+进入交互 pSQL 工具，建立表：
+CREATE TABLE mytable (
+id varchar(20),
+name varchar(30));
+建立完成后，会得到一条 “CREATED” 的信息，表示建立成功。现在插入一条数据：
+INSERT INTO mytable values('Author', 'Xu Yongjiu');
+pSQL 返回 INSERT 18732 1，查询插入是否成功：
+SELECT * FROM MYTABLE;
+退出 pSQL ，用 \q 命令。
