@@ -273,3 +273,5 @@ su  - postgres         记得中间一定有  -
 /usr /local/pgsql/bin/initdb /usr/local/pgsql/data  初始化数据库
 说的不能再详细了吧。
 按我说的去做肯定没问题我装了30多台。
+
+pw usershow -a
