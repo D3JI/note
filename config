@@ -275,3 +275,44 @@ su  - postgres         记得中间一定有  -
 按我说的去做肯定没问题我装了30多台。
 
 pw usershow -a
+
+
+
+
+三、安装postgresql 8.0
+
+安装#
+cd /usr/ports/databades/postgresql-devel
+#make install
+#rehash
+初始化数据库
+
+#su -l pgsql -c initdb
+启动数据库服务器
+
+# su pgsql
+# pg_ctl -D /usr/local/pgsql/data -l logfile
+
+
+创建pgsql库
+
+$createdb pgsql
+
+
+测试$psql
+pgsql-# /l //**显示所有数据库列表，和mysql的show databases功能等同;
+
+默认连接pgsql库，如果前面不创建，这一步就会报错。这点好像和mysql有点区别。
+
+四、初学经验分享
+在pgsql-#的提示下，分两种命令格式，以"/"引导开头的是postgresql的管理命令，再一种就是SQL语句。
+/?       显示第一种类型的帮助说明。
+/h       显示SQL语言的语句列表
+/h show   显示某条语句的说明和语法
+
+/l         列所有数据库
+/dt       显示当前数据库中表的信息，与mysql 中show table等同
+/c <database name>   连接另外一库
+/du     显示用户列表
+/!       回到shell下执行操作，exit返回
+/q     退出psql 
