@@ -252,10 +252,8 @@ postgresql_class="default"
 FreeBSD 會自動幫你將 8.3 版的 server 和 client 都一併裝好。接著把 contrib package 也裝起來：
     # cd ../postgresql-contrib
     # make install clean
-先看一下你的 /usr/local/pgsql 下是否已經建好新的資料庫？
-    # ls /usr/local/pgsql
-如果這個目錄下为空，那麼代表 Makefile 並沒有自動幫你做 initdb，請執行：
     # /usr/local/etc/rc.d/postgresql initdb [1]
 這時你再下 ls /usr/local/pgsql 指令時，就可以看到多出一個 data 目錄了，這樣才能正確啟動 PostgreSQL：
-    # /usr/local/etc/rc.d/postgresql start [2]
-如果沒出現任何錯誤訊息，那麼先恭喜你，安裝好了
+    #/usr/local/bin/postgres -D /usr/local/pgsql/data
+或使用:
+    #/usr/local/bin/pg_ctl -D /usr/local/pgsql/data -l logfile start
