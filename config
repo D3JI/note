@@ -257,3 +257,19 @@ FreeBSD 會自動幫你將 8.3 版的 server 和 client 都一併裝好。接著
     #/usr/local/bin/postgres -D /usr/local/pgsql/data
 或使用:
     #/usr/local/bin/pg_ctl -D /usr/local/pgsql/data -l logfile start
+
+
+LINUX下POSTGRESQL数据库的建立问题！◎！！！！！
+
+不是跟你说了吗按我的方法去做。你有没有做  
+tar vxf post732.tar.gz
+make install
+groupadd postgres
+useradd postgres -d /usr/local/pgsql -g postgres
+chown -R postgres.postgres /usr/local/pgsql
+chmod -R 777 /usr/local/pgsql
+cp lib/* /usr/lib/.
+su  - postgres         记得中间一定有  -
+/usr /local/pgsql/bin/initdb /usr/local/pgsql/data  初始化数据库
+说的不能再详细了吧。
+按我说的去做肯定没问题我装了30多台。
