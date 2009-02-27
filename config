@@ -242,6 +242,7 @@ pw groupdel applegroup
 /!       回到shell下执行操作，exit返回
 /q     退出psql 
 
+$createuser -P 'username' #创建叫做username的用户，并且需要密码
 $createdb mydb
 $pSQL mydb
 进入交互 pSQL 工具，建立表：
