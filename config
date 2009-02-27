@@ -69,24 +69,24 @@ MASTER_SITE_OVERRIDE?=${MASTER_SITE_BACKUP}
 
 
 在freebsd下安装ROR开发环境
-1, 安装mysql
-   cd /usr/ports/databases/mysql51-server
-   make WITH_CHARSET=utf8 WITH_XCHARSET=all install clean
-   安装mysql基础表
-   #/usr/local/mysql/bin/mysql_install_db --user=mysql
-   添加必要的用户
-   # mysqld_safe &
-     mysqladmin -u root password 'localpassword'
-   复制必要的配置文件
-   # cp /usr/local/share/mysql/my-medium.cnf /var/db/mysql/my.cnf
-   设置mysql开机启动
-   #vi /etc/rc.conf
-   添加 mysql_enable="YES"
-   重启mysql
-   # /usr/local/etc/rc.d/mysql-server restart
-   检查一下mysql，是否成功安装
-   # mysqlshow -p
-
+1, 安装postgresql
+   首先我们想数据库能开机启动，所以我们先
+   # echo 'postgresql_enable="YES"' >> /etc/rc.conf
+   使用 port 來安裝 PostgreSQL 8.3 
+   # cd /usr/ports/databases/postgresql83-server
+   # make install clean
+   安装完了使用pw usershow -a
+   #pw groupshow -a
+   看一下，是否建立了对应的账号，然后切换到用户，初始化数据库
+   #su pgsql
+   $initdb -D /usr/local/pgsql/data   -E utf8
+   這時你再下 ls /usr/local/pgsql 指令時，就可以看到多出一個 data 目錄了，這樣才能正確啟動 PostgreSQL：
+   $postgres -D /usr/local/pgsql/data
+   启动postgresql以后，就可以创建删除数据库了。如果想进入数据库里查看数据库，我们用psql，
+   该命令需要一个数据库名作为参数，默认是当前用户名 所以我们进行下面操作
+   $createdb pgsql
+   $psql
+   然后，进入下面的提示符，一切正常pgsql=#
 2，安装ruby
    # cd /usr/ports/lang/ruby18
    # make install clean 
@@ -222,29 +222,6 @@ pw usershow -a
 pw userdel apple
 pw groupshow -a
 pw groupdel applegroup
-使用 port 來安裝 PostgreSQL 8.3 
-    # cd /usr/ports/databases/postgresql83-server
-    # make install clean
-然后看一下，是否有数据库  ls /usr/local/pgsql
-安装完了使用pw usershow -a
-          pw groupshow -a
-看一下，是否建立了对应的账号，然后切换到用户，初始化数据库
-#su pgsql
-$initdb -D /usr/local/pgsql/data   -E utf8
-這時你再下 ls /usr/local/pgsql 指令時，就可以看到多出一個 data 目錄了，這樣才能正確啟動 PostgreSQL：
-$postgres -D /usr/local/pgsql/data
-启动postgresql以后，就可以创建删除数据库了。如果想进入数据库里查看数据库，我们用psql，该命令需要一个数据库名作为参数，默认是当前用户名
-所以我们进行下面操作
-$createdb pgsql
-$psql
-然后，进入下面的提示符，一切正常pgsql=#
-
-
-
-
-
-
-
 
 
 
@@ -264,8 +241,6 @@ $psql
 /q     退出psql 
 
 $createdb mydb
-PostgreSQL 会返回 “ CREATED DATABASE”的信息，表明数据库建立完成。
-$pSQL mydb
 $pSQL mydb
 进入交互 pSQL 工具，建立表：
 CREATE TABLE mytable (
