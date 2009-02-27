@@ -100,8 +100,10 @@ MASTER_SITE_OVERRIDE?=${MASTER_SITE_BACKUP}
    #ruby setup.rb
    #mv /usr/local/bin/gem18 /usr/local/bin/gem
    #rehash
-5, 使用gem安装rails以及ruby的mysql库
-   gem install rails mysql
+5, 使用gem安装rails以及ruby的postgres库
+   gem install rails postgres
+   小注:如果没有下载正确的gem包,在freebsd下面,gem会先到这个文件夹里找错误的gem包,
+   所以,要先删除掉/usr/local/lib/ruby/gems/1.8/cache/里面的错误包,重下
 6, 安装 ImageMagick
    # cd /usr/ports/graphics/ImageMagick/
    # make install clean
