@@ -12,6 +12,28 @@ boot
 安装完成后，在/boot/loader.conf里面加入：
 hint.atkbd.0.flags="0x1"
 
+
+
+
+
+一、安装Xorg
+#sysinstall  依次选择Configure->;Packages->CD/DVD->All->XOrg-7.3_1。
+#Xorg -configure 后,会在/root 目录下自动创建xorg.conf.new   
+#Xorg -config xorg.conf.new
+#cp xorg.conf.new /etc/X11/xorg.conf
+#startx
+二、安装Gnome
+#sysinstall  选择Configure->;Packages->CD/DVD->All->gnome2-2.20.1
+#echo "exec gnome-session " > ~/.xinitrc )
+#startx
+如果你想开机就用图形方式进入X，你可以在/etc/rc.conf中添加 gdm_enable="YES"
+
+
+
+
+
+
+
 1,选择最小安装，选择定制，选择man,ports
   所有的设置，除了设置密码，都选否。安装完毕，取出光盘，重启
 2，#vi /etc/make.conf 
@@ -65,7 +87,7 @@ MASTER_SITE_OVERRIDE?=${MASTER_SITE_BACKUP}
    至此，freebsd桌面调好，输入法中文，字体合格
 
 
-
+如果最小化安装以后，想用光盘安装桌面，可以用下面的步骤
 
 
 在freebsd下安装ROR开发环境
