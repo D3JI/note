@@ -16,24 +16,6 @@ hint.atkbd.0.flags="0x1"
 
 
 
-一、安装Xorg
-#sysinstall  依次选择Configure->;Packages->CD/DVD->All->XOrg-7.3_1。
-#Xorg -configure 后,会在/root 目录下自动创建xorg.conf.new   
-#Xorg -config xorg.conf.new
-#cp xorg.conf.new /etc/X11/xorg.conf
-#startx
-二、安装Gnome
-#sysinstall  选择Configure->;Packages->CD/DVD->All->gnome2-2.20.1
-#echo "exec gnome-session " > ~/.xinitrc )
-#startx
-如果你想开机就用图形方式进入X，你可以在/etc/rc.conf中添加 gdm_enable="YES"
-
-
-
-
-
-
-
 1,选择最小安装，选择定制，选择man,ports
   所有的设置，除了设置密码，都选否。安装完毕，取出光盘，重启
 2，#hostname www.rorforge.org
@@ -101,7 +83,7 @@ MASTER_SITE_OVERRIDE?=${MASTER_SITE_BACKUP}
    #pw groupshow -a
    看一下，是否建立了对应的账号，然后切换到用户，初始化数据库
    #su pgsql
-   $initdb -D /usr/local/pgsql/data   -E UTF8 (--no-locale)
+   $initdb -D /usr/local/pgsql/data   -E UTF8
    這時你再下 ls /usr/local/pgsql 指令時，就可以看到多出一個 data 目錄了，這樣才能正確啟動 PostgreSQL：
    $postgres -D /usr/local/pgsql/data
    启动postgresql以后，就可以创建删除数据库了。如果想进入数据库里查看数据库，我们用psql，
@@ -123,7 +105,7 @@ MASTER_SITE_OVERRIDE?=${MASTER_SITE_BACKUP}
    #mv /usr/local/bin/gem18 /usr/local/bin/gem
    #rehash
 5, 使用gem安装rails以及ruby的postgres库
-   gem install rails postgres
+   gem install rails postgres-pr
    小注:如果没有下载正确的gem包,在freebsd下面,gem会先到这个文件夹里找错误的gem包,
    所以,要先删除掉/usr/local/lib/ruby/gems/1.8/cache/里面的错误包,重下
 6, 安装 ImageMagick
