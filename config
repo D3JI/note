@@ -18,8 +18,7 @@ hint.atkbd.0.flags="0x1"
 
 1,选择最小安装，选择定制，选择man,ports
   所有的设置，除了设置密码，都选否。安装完毕，取出光盘，重启
-2，#hostname www.rorforge.org
-   #vi /etc/rc.conf 
+2 #vi /etc/rc.conf 
    输入： hostname="www.rorforge.org"
           defaultrouter="192.168.2.1"
           或者是，根据机器的不同,首先运行命令  ifconfig ，查看网卡的名字是什么
@@ -28,14 +27,19 @@ hint.atkbd.0.flags="0x1"
    #vi /etc/resolv.conf
    输入： nameserver 202.102.134.68
    重启，可以上网
-3，#vi /etc/make.conf 
+
+3, #portsnap fetch extract  更新包管理器
+4, #cd /usr/ports/devel/git  安装git
+   #make install clean
+5, git下载安装指南
+#vi /etc/make.conf 
 #############################################################
 MASTER_SITE_BACKUP?=\
 ftp://ftp.freebsd.org.cn/pub/FreeBSD/ports/distfiles/${DIST_SUBDIR}/\
 http://ports.cn.freebsd.org/${DIST_SUBDIR}/
 MASTER_SITE_OVERRIDE?=${MASTER_SITE_BACKUP}
 ############################################################
-4, #portsnap fetch extract  更新包管理器
+4,安装xorg  
    #cd /usr/ports/x11/xorg
    #make install clean
    #rehash
