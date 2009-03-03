@@ -113,20 +113,16 @@ MASTER_SITE_OVERRIDE?=${MASTER_SITE_BACKUP}
    小注:如果没有下载正确的gem包,在freebsd下面,gem会先到这个文件夹里找错误的gem包,
    所以,要先删除掉/usr/local/lib/ruby/gems/1.8/cache/里面的错误包,重下
 6, 安装 ImageMagick
-   # cd /usr/ports/graphics/ImageMagick/
+   # cd /usr/ports/graphics/ruby-rmagick 
    # make install clean
    # rehash
    # convert --version
-7, 安装RMagic
-   # tar xvjf RMagick-2.9.1-tar.bz2  
-   # ruby setup.rb
-   # ruby setup.rb install
-8, 因为ports里的vim不是最新的，所以手动下载安装
+7, 因为ports里的vim不是最新的，所以手动下载安装
    # tar -zxvf vim2.tar.gz2
    # cd vim72/src
    # make 
    # make install
-9, #cd /usr/ports/devel/git 
+8, #cd /usr/ports/devel/git 
    #make install clean
    去用户的主目录
    mkdir .vim
