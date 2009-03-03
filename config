@@ -29,9 +29,7 @@ hint.atkbd.0.flags="0x1"
    重启，可以上网
 
 3, #portsnap fetch extract  更新包管理器
-4, #cd /usr/ports/devel/git  安装git
-   #make install clean
-5, git下载安装指南
+
 #vi /etc/make.conf 
 #############################################################
 MASTER_SITE_BACKUP?=\
@@ -39,30 +37,28 @@ ftp://ftp.freebsd.org.cn/pub/FreeBSD/ports/distfiles/${DIST_SUBDIR}/\
 http://ports.cn.freebsd.org/${DIST_SUBDIR}/
 MASTER_SITE_OVERRIDE?=${MASTER_SITE_BACKUP}
 ############################################################
-4,安装xorg  
-   #cd /usr/ports/x11/xorg
+
+4, #adduser  添加用户，选csh，并登陆
+5, #cd /usr/ports/chinese/fcitx
    #make install clean
-   #rehash
-   #Xorg -configure
-   #cp /root/xorg.conf.new /etc/X11/xorg.conf
-   #vi /etc/X11/xorg.conf
-   在ServerLayout里加上一行 Option "AllowEmptyInput" "off"
-   #startx查看XORG配置是否成功。
-5, #cd /usr/ports/x11-wm/xfce4
-   #make install clean
-   #which startxfce4
-   #echo "/usr/local/bin/startxfce4" > ~/.xinitrc
-6, #cd /usr/ports/www/firefox3
-   #make install clean
-7, #adduser  添加用户，选csh，并登陆
-9, #cd /usr/ports/chinese/fcitx
-   #make install clean
-   #vi ~/.xinitrc
-   输入： LC_CTYPE=zh_CN.eucCN
-          XMODIFIERS='@im=fcitx'
-          export LC_CTYPE XMODIFIERS
-          fcitx &
-10,改善字体
+   #vi  /usr/local/share/config/kdm/Xsession
+将其中大default更改为如下
+  default)
+#   LANGUAGE=zh_CN.UTF-8
+    LANG=zh_CN.UTF-8
+    LC_ALL=zh_CN.UTF-8
+#   KDE_LANG=zh_CN.UTF-8
+    XMODIFIERS=@im=fcitx
+#   export LANG LC_ALL KDE_LANG XMODIFIERS
+    export LANG LC_ALL XMODIFIERS
+    fcitx &
+    exec /usr/local/bin/startkde
+    ;;
+  *)
+    eval exec "$session"
+    ;;
+
+6,改善字体
    准备simsun.ttc
    #mkdir /usr/local/lib/X11/fonts/TrueType
    #cp simsun.ttc /usr/local/lib/X11/fonts/TrueType  
@@ -73,7 +69,6 @@ MASTER_SITE_OVERRIDE?=${MASTER_SITE_BACKUP}
    至此，freebsd桌面调好，输入法中文，字体合格
 
 
-如果最小化安装以后，想用光盘安装桌面，可以用下面的步骤
 
 
 在freebsd下安装ROR开发环境
