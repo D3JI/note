@@ -107,13 +107,7 @@ MASTER_SITE_OVERRIDE?=${MASTER_SITE_BACKUP}
    gem install rails postgres-pr
    小注:如果没有下载正确的gem包,在freebsd下面,gem会先到这个文件夹里找错误的gem包,
    所以,要先删除掉/usr/local/lib/ruby/gems/1.8/cache/里面的错误包,重下
-6, 安装 ImageMagick
-   # cd /usr/ports/graphics/ruby-rmagick 
-   # make install clean
-   # rehash
-   # convert --version
-
-第6步分开安装不知道是什么样子
+6, 不能在桌面里安装，否则会碰到问题：
    # cd /usr/ports/graphics/ImageMagick
    # make install clean
    # rehash
