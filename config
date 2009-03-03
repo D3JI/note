@@ -113,7 +113,6 @@ MASTER_SITE_OVERRIDE?=${MASTER_SITE_BACKUP}
    # rehash
    # convert --version
    #gem install rmagick
-
 7, 因为ports里的vim不是最新的，所以手动下载安装
    # tar -zxvf vim2.tar.gz2
    # cd vim72/src
